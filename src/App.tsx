@@ -12,6 +12,9 @@ const WhiplePlaceholder = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const animationRef = useRef<number | null>(null);
   const [showCopiedPopup, setShowCopiedPopup] = useState(false);
+  const [displayedText, setDisplayedText] = useState('');
+  const [isTypingTech, setIsTypingTech] = useState(false);
+  const [typingComplete, setTypingComplete] = useState(false);
 
   const copyEmailToClipboard = () => {
     const email = 'k.greschnow@gmail.com';
@@ -20,6 +23,30 @@ const WhiplePlaceholder = () => {
       setTimeout(() => setShowCopiedPopup(false), 2000);
     });
   };
+
+  // Typing animation effect
+  useEffect(() => {
+    const fullText = 'WHIPLE.tech';
+    let currentIndex = 0;
+
+    const typeText = () => {
+      if (currentIndex <= fullText.length) {
+        setDisplayedText(fullText.slice(0, currentIndex));
+        setIsTypingTech(currentIndex > 6); // Set to true when typing ".tech"
+        currentIndex++;
+        setTimeout(typeText, 150); // Typing speed
+      } else {
+        setTypingComplete(true);
+      }
+    };
+
+    // Start typing after a short delay
+    const startDelay = setTimeout(typeText, 200);
+
+    return () => {
+      clearTimeout(startDelay);
+    };
+  }, []);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -117,34 +144,54 @@ const WhiplePlaceholder = () => {
       <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-8">
 
         {/* Animated Logo */}
-        <div className="mb-12 animate-fadeInUp">
+        <div className="mb-12 animate-fadeIn">
           <div className="flex items-center justify-center mb-4">
-            {/* Logo text */}
-            <div className="flex items-center">
-              <span
-                className="font-bold tracking-tight whiple-logo-text"
-                style={{ color: '#FF6B35', marginRight: '0.1em', fontSize: '72px' }}
-              >
-                WHIPLE
-              </span>
-              <span
-                className="whiple-logo-tech"
-                style={{ color: '#e8e8e8', fontWeight: 300, fontFamily: "'Nunito', Arial, Helvetica, sans-serif", fontSize: '72px' }}
-              >
-                .tech
-              </span>
-            </div>
+            {/* Logo text container with invisible placeholder for full width */}
+            <div className="relative flex items-center">
+              {/* Invisible placeholder to reserve full width */}
+              <div className="invisible flex items-center">
+                <span
+                  className="font-bold tracking-tight whiple-logo-text"
+                  style={{ color: '#FF6B35', marginRight: '0.1em', fontSize: '72px' }}
+                >
+                  WHIPLE
+                </span>
+                <span
+                  className="whiple-logo-tech"
+                  style={{ color: '#e8e8e8', fontWeight: 300, fontFamily: "'Nunito', Arial, Helvetica, sans-serif", fontSize: '72px' }}
+                >
+                  .tech
+                </span>
+                <div className="w-8 h-16 ml-1" />
+              </div>
 
-            {/* Orange block */}
-            <div
-              className="w-8 h-16 animate-pulse"
-              style={{ backgroundColor: '#FF6B35' }}
-            />
+              {/* Visible text positioned absolutely */}
+              <div className="absolute inset-0 flex items-center">
+                <span
+                  className="font-bold tracking-tight whiple-logo-text"
+                  style={{ color: '#FF6B35', marginRight: '0.1em', fontSize: '72px' }}
+                >
+                  {displayedText.slice(0, 6)}
+                </span>
+                <span
+                  className="whiple-logo-tech"
+                  style={{ color: '#e8e8e8', fontWeight: 300, fontFamily: "'Nunito', Arial, Helvetica, sans-serif", fontSize: '72px' }}
+                >
+                  {displayedText.slice(6)}
+                </span>
+
+                {/* Orange cursor block */}
+                <div
+                  className={`w-8 h-16 ml-1 animate-fadeIn transition-colors duration-900 ${!typingComplete ? 'animate-pulse' : ''}`}
+                  style={{ backgroundColor: typingComplete || !isTypingTech ? '#FF6B35' : '#e8e8e8' }}
+                />
+              </div>
+            </div>
           </div>
         </div>
 
         {/* Main message */}
-        <div className="mb-8 animate-fadeInUp animation-delay-300 flex flex-col items-center text-center">
+        <div className="mb-8 animate-fadeInUp animation-delay-600 flex flex-col items-center text-center">
           <p className="text-md md:text-lg text-gray-300 max-w-2xl leading-relaxed">
             Stay tuned as we're crafting something special.
           </p>
@@ -197,6 +244,19 @@ const WhiplePlaceholder = () => {
           }
         }
 
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        .animate-fadeIn {
+          animation: fadeIn 0.8s ease-out forwards;
+        }
+
         .animate-fadeInUp {
           animation: fadeInUp 0.8s ease-out forwards;
         }
@@ -213,6 +273,16 @@ const WhiplePlaceholder = () => {
 
         .animation-delay-900 {
           animation-delay: 0.9s;
+          opacity: 0;
+        }
+
+        .animation-delay-1000 {
+          animation-delay: 1s;
+          opacity: 0;
+        }
+
+        .animation-delay-1500 {
+          animation-delay: 1.5s;
           opacity: 0;
         }
 
