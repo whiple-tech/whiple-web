@@ -1,0 +1,27 @@
+{
+  "name": "WHIPLE.tech - Innovative Technology Solutions",
+  "short_name": "WHIPLE.tech",
+  "description": "WHIPLE.tech provides cutting-edge technology solutions and innovative digital experiences.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "icons": [
+    {
+      "src": "/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "categories": ["technology", "business", "productivity"],
+  "lang": "en",
+  "dir": "ltr"
+}

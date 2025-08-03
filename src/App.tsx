@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import SEO from './components/SEO';
 
 interface Particle {
   x: number;
@@ -133,106 +134,108 @@ const WhiplePlaceholder = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden">
-      {/* Animated background canvas */}
-      <canvas
-        ref={canvasRef}
-        className="absolute inset-0 w-full h-full"
-      />
+    <>
+      <SEO />
+      <div className="relative w-full h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-black overflow-hidden">
+        {/* Animated background canvas */}
+        <canvas
+          ref={canvasRef}
+          className="absolute inset-0 w-full h-full"
+        />
 
-      {/* Content overlay */}
-      <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-8">
+        {/* Content overlay */}
+        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-8">
 
-        {/* Animated Logo */}
-        <div className="mb-12 animate-fadeIn">
-          <div className="flex items-center justify-center mb-4">
-            {/* Logo text container with invisible placeholder for full width */}
-            <div className="relative flex items-center">
-              {/* Invisible placeholder to reserve full width */}
-              <div className="invisible flex items-center">
-                <span
-                  className="font-bold tracking-tight whiple-logo-text"
-                  style={{ color: '#FF6B35', marginRight: '0.1em', fontSize: '72px' }}
-                >
-                  WHIPLE
-                </span>
-                <span
-                  className="whiple-logo-tech"
-                  style={{ color: '#e8e8e8', fontWeight: 300, fontFamily: "'Nunito', Arial, Helvetica, sans-serif", fontSize: '72px' }}
-                >
-                  .tech
-                </span>
-                <div className="w-8 h-16 ml-1" />
-              </div>
+          {/* Animated Logo */}
+          <div className="mb-12 animate-fadeIn">
+            <div className="flex items-center justify-center mb-4">
+              {/* Logo text container with invisible placeholder for full width */}
+              <div className="relative flex items-center">
+                {/* Invisible placeholder to reserve full width */}
+                <div className="invisible flex items-center">
+                  <span
+                    className="font-bold tracking-tight whiple-logo-text"
+                    style={{ color: '#FF6B35', marginRight: '0.1em', fontSize: '72px' }}
+                  >
+                    WHIPLE
+                  </span>
+                  <span
+                    className="whiple-logo-tech"
+                    style={{ color: '#e8e8e8', fontWeight: 300, fontFamily: "'Nunito', Arial, Helvetica, sans-serif", fontSize: '72px' }}
+                  >
+                    .tech
+                  </span>
+                  <div className="w-8 h-16 ml-1" />
+                </div>
 
-              {/* Visible text positioned absolutely */}
-              <div className="absolute inset-0 flex items-center">
-                <span
-                  className="font-bold tracking-tight whiple-logo-text"
-                  style={{ color: '#FF6B35', marginRight: '0.1em', fontSize: '72px' }}
-                >
-                  {displayedText.slice(0, 6)}
-                </span>
-                <span
-                  className="whiple-logo-tech"
-                  style={{ color: '#e8e8e8', fontWeight: 300, fontFamily: "'Nunito', Arial, Helvetica, sans-serif", fontSize: '72px' }}
-                >
-                  {displayedText.slice(6)}
-                </span>
+                {/* Visible text positioned absolutely */}
+                <div className="absolute inset-0 flex items-center">
+                  <span
+                    className="font-bold tracking-tight whiple-logo-text"
+                    style={{ color: '#FF6B35', marginRight: '0.1em', fontSize: '72px' }}
+                  >
+                    {displayedText.slice(0, 6)}
+                  </span>
+                  <span
+                    className="whiple-logo-tech"
+                    style={{ color: '#e8e8e8', fontWeight: 300, fontFamily: "'Nunito', Arial, Helvetica, sans-serif", fontSize: '72px' }}
+                  >
+                    {displayedText.slice(6)}
+                  </span>
 
-                {/* Orange cursor block */}
-                <div
-                  className={`w-8 h-16 ml-1 animate-fadeIn transition-colors duration-900 ${!typingComplete ? 'animate-pulse' : ''}`}
-                  style={{ backgroundColor: typingComplete || !isTypingTech ? '#FF6B35' : '#e8e8e8' }}
-                />
+                  {/* Orange cursor block */}
+                  <div
+                    className={`w-8 h-16 ml-1 animate-fadeIn transition-colors duration-900 ${!typingComplete ? 'animate-pulse' : ''}`}
+                    style={{ backgroundColor: typingComplete || !isTypingTech ? '#FF6B35' : '#e8e8e8' }}
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Main message */}
-        <div className="mb-8 animate-fadeInUp animation-delay-600 flex flex-col items-center text-center">
-          <p className="text-md md:text-lg text-gray-300 max-w-2xl leading-relaxed">
-            Stay tuned as we're crafting something special.
-          </p>
-          <p className="text-sm md:text-md text-gray-400 max-w-2xl leading-relaxed">
-            Reach out for personalized solutions that will transform how you work.
-          </p>
-        </div>
-
-        {/* Optional contact info */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-fadeInUp animation-delay-900">
-          {/* Copy success popup - positioned relative to email */}
-          <div
-            className={`absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 z-50 text-white px-3 py-1 rounded-md shadow-lg transition-all duration-300 ease-in-out whitespace-nowrap ${showCopiedPopup ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-1 pointer-events-none'
-              }`}
-            style={{ backgroundColor: '#FF6B25', color: '#e8e8e8', fontSize: '12px' }}
-          >
-            Email copied to clipboard!
+          {/* Main message */}
+          <div className="mb-8 animate-fadeInUp animation-delay-600 flex flex-col items-center text-center">
+            <p className="text-md md:text-lg text-gray-300 max-w-2xl leading-relaxed">
+              Stay tuned as we're crafting something special.
+            </p>
+            <p className="text-sm md:text-md text-gray-400 max-w-2xl leading-relaxed">
+              Reach out for personalized solutions that will transform how you work.
+            </p>
           </div>
 
-          <p className="text-gray-400 text-sm">
-            Contact us via{' '}
-            <span
-              style={{ color: '#F28C38', cursor: 'pointer' }}
-              onClick={copyEmailToClipboard}
-              className="hover:underline"
+          {/* Optional contact info */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-fadeInUp animation-delay-900">
+            {/* Copy success popup - positioned relative to email */}
+            <div
+              className={`absolute bottom-full mb-2 left-1/2 transform -translate-x-1/2 z-50 text-white px-3 py-1 rounded-md shadow-lg transition-all duration-300 ease-in-out whitespace-nowrap ${showCopiedPopup ? 'opacity-100 scale-100 translate-y-0' : 'opacity-0 scale-95 translate-y-1 pointer-events-none'
+                }`}
+              style={{ backgroundColor: '#FF6B25', color: '#e8e8e8', fontSize: '12px' }}
             >
-              k.greschnow@gmail.com
-            </span>
-          </p>
+              Email copied to clipboard!
+            </div>
+
+            <p className="text-gray-400 text-sm">
+              Contact us via{' '}
+              <span
+                style={{ color: '#F28C38', cursor: 'pointer' }}
+                onClick={copyEmailToClipboard}
+                className="hover:underline"
+              >
+                k.greschnow@gmail.com
+              </span>
+            </p>
+          </div>
         </div>
-      </div>
 
-      {/* Google Fonts import for Poppins 900 and Nunito 300 */}
-      <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@900&family=Nunito:wght@300&display=swap"
-        rel="stylesheet"
-      />
+        {/* Google Fonts import for Poppins 900 and Nunito 300 */}
+        <link
+          href="https://fonts.googleapis.com/css2?family=Poppins:wght@900&family=Nunito:wght@300&display=swap"
+          rel="stylesheet"
+        />
 
-      {/* Custom animations and font styles */}
-      <style dangerouslySetInnerHTML={{
-        __html: `
+        {/* Custom animations and font styles */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
         @keyframes fadeInUp {
           from {
             opacity: 0;
@@ -311,7 +314,8 @@ const WhiplePlaceholder = () => {
           }
         }
       `}} />
-    </div>
+      </div>
+    </>
   );
 };
 
