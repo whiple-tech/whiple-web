@@ -1,0 +1,16 @@
+services:
+  whiple-web:
+    build: .
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: unless-stopped
+    container_name: whiple-web
+    volumes:
+      # Persist Caddy data for SSL certificates
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:
