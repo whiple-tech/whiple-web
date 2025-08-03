@@ -1,6 +1,9 @@
 whiple.tech {
     # Serve files from the document root
     root * /usr/share/caddy
+
+    # Redirect HTTP to HTTPS
+    redir http://whiple.tech{uri} https://whiple.tech{uri} permanent
     
     # Enable file server
     file_server
