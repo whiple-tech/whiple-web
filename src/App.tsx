@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import SEO from './components/SEO';
+import './styles/animations.css';
 
 interface Particle {
   x: number;
@@ -195,10 +196,10 @@ const WhiplePlaceholder = () => {
 
           {/* Main message */}
           <div className="mb-8 animate-fadeInUp animation-delay-600 flex flex-col items-center text-center">
-            <p className="text-md md:text-lg text-gray-300 max-w-2xl leading-relaxed">
+            <p className="text-md md:text-lg text-gray-300 max-w-2xl leading-relaxed nunito-text">
               Stay tuned as we're crafting something special.
             </p>
-            <p className="text-sm md:text-md text-gray-400 max-w-2xl leading-relaxed">
+            <p className="text-sm md:text-md text-gray-400 max-w-2xl leading-relaxed nunito-text">
               Reach out for personalized solutions that will transform how you work.
             </p>
           </div>
@@ -214,7 +215,7 @@ const WhiplePlaceholder = () => {
               Email copied to clipboard!
             </div>
 
-            <p className="text-gray-400 text-sm">
+            <p className="text-gray-400 text-sm nunito-text">
               Contact us via{' '}
               <span
                 style={{ color: '#F28C38', cursor: 'pointer' }}
@@ -232,88 +233,6 @@ const WhiplePlaceholder = () => {
           href="https://fonts.googleapis.com/css2?family=Poppins:wght@900&family=Nunito:wght@300&display=swap"
           rel="stylesheet"
         />
-
-        {/* Custom animations and font styles */}
-        <style dangerouslySetInnerHTML={{
-          __html: `
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes fadeIn {
-          from {
-            opacity: 0;
-          }
-          to {
-            opacity: 1;
-          }
-        }
-
-        .animate-fadeIn {
-          animation: fadeIn 0.8s ease-out forwards;
-        }
-
-        .animate-fadeInUp {
-          animation: fadeInUp 0.8s ease-out forwards;
-        }
-
-        .animation-delay-300 {
-          animation-delay: 0.3s;
-          opacity: 0;
-        }
-
-        .animation-delay-600 {
-          animation-delay: 0.6s;
-          opacity: 0;
-        }
-
-        .animation-delay-900 {
-          animation-delay: 0.9s;
-          opacity: 0;
-        }
-
-        .animation-delay-1000 {
-          animation-delay: 1s;
-          opacity: 0;
-        }
-
-        .animation-delay-1500 {
-          animation-delay: 1.5s;
-          opacity: 0;
-        }
-
-        /* Apply Poppins 900 to logo text */
-        .whiple-logo-text {
-          font-family: 'Poppins', Arial, Helvetica, sans-serif !important;
-          font-weight: 900 !important;
-          font-style: italic !important;
-          letter-spacing: 0.1em !important;
-        }
-        
-        /* Apply Nunito 300 to .tech */
-        .whiple-logo-tech {
-          font-family: 'Nunito', Arial, Helvetica, sans-serif !important;
-          font-weight: 300 !important;
-          letter-spacing: 0.1em !important;
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 640px) {
-          .text-6xl {
-            font-size: 3rem;
-          }
-          .text-8xl {
-            font-size: 4.5rem;
-          }
-        }
-      `}} />
       </div>
     </>
   );

@@ -1,0 +1,82 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animation-delay-300 {
+  animation-delay: 0.3s;
+  opacity: 0;
+}
+
+.animation-delay-600 {
+  animation-delay: 0.6s;
+  opacity: 0;
+}
+
+.animation-delay-900 {
+  animation-delay: 0.9s;
+  opacity: 0;
+}
+
+.animation-delay-1000 {
+  animation-delay: 1s;
+  opacity: 0;
+}
+
+.animation-delay-1500 {
+  animation-delay: 1.5s;
+  opacity: 0;
+}
+
+/* Apply Poppins 900 to logo text */
+.whiple-logo-text {
+  font-family: 'Poppins', Arial, Helvetica, sans-serif !important;
+  font-weight: 900 !important;
+  font-style: italic !important;
+  letter-spacing: 0.1em !important;
+}
+
+/* Apply Nunito 300 to .tech */
+.whiple-logo-tech {
+  font-family: 'Nunito', Arial, Helvetica, sans-serif !important;
+  font-weight: 300 !important;
+  letter-spacing: 0.1em !important;
+}
+
+/* Apply Nunito to message and contact texts */
+.nunito-text {
+  font-family: 'Nunito', Arial, Helvetica, sans-serif !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .text-6xl {
+    font-size: 3rem;
+  }
+  .text-8xl {
+    font-size: 4.5rem;
+  }
+}
