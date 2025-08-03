@@ -2,6 +2,10 @@ http://whiple.tech {
     redir https://{host}{uri} permanent
 }
 
+www.whiple.tech {
+    redir https://whiple.tech{uri} permanent
+}
+
 whiple.tech {
     # Serve files from the document root
     root * /usr/share/caddy
